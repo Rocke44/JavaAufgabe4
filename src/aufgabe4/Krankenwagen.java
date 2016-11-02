@@ -18,10 +18,21 @@ public class Krankenwagen extends Fortbewegungsmittel {
         this.blaulicht = false;
     }
 
+    public boolean isBlaulichtAn(){
+        return this.blaulicht;
+    }
+
+    @Override
+    public void setSpeed(double speed){
+        if(speed>50) {
+            this.blaulichtAnschalten();
+        }
+        super.setSpeed(speed);
+    }
+
     @Override
     public void move(double time){
-        if(this.speed>50){
-            this.blaulichtAnschalten();
+        if(this.getSpeed()>50){
             System.out.println("tatütata");
         }
         super.move(time);

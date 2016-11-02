@@ -3,7 +3,7 @@ package aufgabe4;
 /**
  * Created by jrocke on 02.11.16.
  */
-public abstract class Fortbewegungsmittel {
+public class Fortbewegungsmittel {
     private double position;        //in km
 
     final private double maxSpeed;  //in km pro h
@@ -27,11 +27,18 @@ public abstract class Fortbewegungsmittel {
             throw new FahrException("The speed most be positive");
         }
         if (speed > this.maxSpeed) {
-            throw new FahrException("The max. Speed for this Vehicle is: " + this.maxSpeed + "km/h!");
+            this.speed = this.maxSpeed;
+        } else {
+            this.speed = speed;
         }
-        this.speed = speed;
     }
 
+    public void setPosition(double position){
+        if(position<0){
+            throw new FahrException("The position cannot be negativ!");
+        }
+        this.position = position;
+    }
     public void move(double time){
         if(time<=0){
             throw new FahrException("The time must be positive!");
